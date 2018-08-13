@@ -4,7 +4,6 @@ import com.googlecode.jsonrpc4j.JsonRpcClient;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 import com.googlecode.jsonrpc4j.spring.JsonProxyFactoryBean;
-import com.googlecode.jsonrpc4j.spring.rest.JsonRpcRestClient;
 import java.net.MalformedURLException;
 import java.net.URL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,12 @@ public class ClientController {
         sb.append(", subtract: " + factory.subtract(calc).getResult());
         sb.append(", multiply: " + factory.multiply(calc).getResult());
         sb.append(", subdivide: " + factory.subdivide(calc).getResult());
+
+        try {
+            factory.thisMethodThrowError();
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
 
         System.out.println(method().getUserCount());
 

@@ -30,4 +30,9 @@ public class CalculatorApiImpl implements CalculatorApi {
         calculation.setResult(calculation.getFirst() / calculation.getSecond());
         return calculation;
     }
+
+    @Override
+    public Calculation thisMethodThrowError() throws MyException {
+        throw new MyException("Some expection message.");
+    }
 }
