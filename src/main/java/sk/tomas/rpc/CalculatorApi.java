@@ -11,13 +11,13 @@ public interface CalculatorApi {
 
     //rpc method name is not necessary if same as method name
     @JsonRpcMethod("add")
-    Calculation add(@JsonRpcParam(value = "input") Calculation calculation);
+    Calculation add(@JsonRpcParam(value = "first") double first, @JsonRpcParam(value = "second") double second);
 
-    Calculation subtract(@JsonRpcParam(value = "input") Calculation calculation);
+    Calculation subtract(@JsonRpcParam(value = "first") double first, @JsonRpcParam(value = "second") double second);
 
-    Calculation multiply(@JsonRpcParam(value = "input") Calculation calculation);
+    Calculation multiply(@JsonRpcParam(value = "first") double first, @JsonRpcParam(value = "second") double second);
 
-    Calculation subdivide(@JsonRpcParam(value = "input") Calculation calculation);
+    Calculation subdivide(@JsonRpcParam(value = "first") double first, @JsonRpcParam(value = "second") double second);
 
     @JsonRpcErrors({
             @JsonRpcError(exception = MyException.class, code = -404, message = "Not found", data = "data object"),

@@ -1,6 +1,5 @@
 package sk.tomas.rpc;
 
-import com.googlecode.jsonrpc4j.JsonRpcClient;
 import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 import com.googlecode.jsonrpc4j.spring.JsonProxyFactoryBean;
@@ -19,21 +18,22 @@ public class ClientController {
     @RequestMapping("/")
     public String index() throws MalformedURLException {
         CalculatorApi factory = factory();
-        Calculation calc = new Calculation(5, 8);
+        double first = 8;
+        double second = 5;
         StringBuilder sb = new StringBuilder();
 
-        sb.append("numbers: " + calc.getFirst() + " and " + calc.getSecond());
-        sb.append(", add: " + factory.add(calc).getResult());
-        sb.append(", subtract: " + factory.subtract(calc).getResult());
-        sb.append(", multiply: " + factory.multiply(calc).getResult());
-        sb.append(", subdivide: " + factory.subdivide(calc).getResult());
+        sb.append("numbers: " + first + " and " + second);
+        sb.append(", add: " + factory.add(first, second).getResult());
+        sb.append(", subtract: " + factory.subtract(first, second).getResult());
+        sb.append(", multiply: " + factory.multiply(first, second).getResult());
+        sb.append(", subdivide: " + factory.subdivide(first, second).getResult());
 
         try {
             factory.thisMethodThrowError();
         } catch (MyException e) {
-            System.out.println(e.getMessage());
+            System.out.println("e.getMessage(): " + e.getMessage());
         }
-
+        new RuntimeException();
         System.out.println(method().getUserCount());
 
         return sb.toString();

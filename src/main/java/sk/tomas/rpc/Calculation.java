@@ -2,16 +2,17 @@ package sk.tomas.rpc;
 
 public class Calculation {
 
-    double first;
-    double second;
-    double result;
+    private double first;
+    private double second;
+    private double result;
 
     public Calculation() {
     }
 
-    public Calculation(double first, double second) {
+    public Calculation(double first, double second, double result) {
         this.first = first;
         this.second = second;
+        this.result = result;
     }
 
     public double getFirst() {

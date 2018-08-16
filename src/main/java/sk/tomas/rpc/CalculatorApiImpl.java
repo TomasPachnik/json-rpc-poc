@@ -8,27 +8,23 @@ import org.springframework.stereotype.Service;
 public class CalculatorApiImpl implements CalculatorApi {
 
     @Override
-    public Calculation add(Calculation calculation) {
-        calculation.setResult(calculation.getFirst() + calculation.getSecond());
-        return calculation;
+    public Calculation add(double first, double second) {
+        return new Calculation(first, second, first + second);
     }
 
     @Override
-    public Calculation subtract(Calculation calculation) {
-        calculation.setResult(calculation.getFirst() - calculation.getSecond());
-        return calculation;
+    public Calculation subtract(double first, double second) {
+        return new Calculation(first, second, first - second);
     }
 
     @Override
-    public Calculation multiply(Calculation calculation) {
-        calculation.setResult(calculation.getFirst() * calculation.getSecond());
-        return calculation;
+    public Calculation multiply(double first, double second) {
+        return new Calculation(first, second, first * second);
     }
 
     @Override
-    public Calculation subdivide(Calculation calculation) {
-        calculation.setResult(calculation.getFirst() / calculation.getSecond());
-        return calculation;
+    public Calculation subdivide(double first, double second) {
+        return new Calculation(first, second, first / second);
     }
 
     @Override
